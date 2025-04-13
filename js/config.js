@@ -14,7 +14,7 @@ const SITE_CONFIG = {
     version: '1.0.0'
 };
 
-// API站点配置
+// API 站点配置
 const API_SITES = {
     heimuer: {
         api: 'https://json.heimuer.xyz',
@@ -32,12 +32,12 @@ const API_SITES = {
     },
     ckzy: {
         api: 'https://www.ckzy1.com',
-        name: 'CK资源',
+        name: 'CK 资源',
         adult: true
     },
     zy360: {
         api: 'https://360zy.com',
-        name: '360资源',
+        name: '360 资源',
     },
     wolong: {
         api: 'https://wolongzyw.com',
@@ -75,7 +75,7 @@ const API_SITES = {
     
     jkun: {
         api: 'https://jkunzyapi.com',
-        name: 'jkun资源',
+        name: 'jkun 资源',
         adult: true
     },
     bwzy: {
@@ -85,7 +85,7 @@ const API_SITES = {
     },
     souav: {
         api: 'https://api.souavzy.vip',
-        name: 'souav资源',
+        name: 'souav 资源',
         adult: true
     },
     siwa: {
@@ -95,19 +95,19 @@ const API_SITES = {
     },
     r155: {
         api: 'https://155api.com',
-        name: '155资源',
+        name: '155 资源',
         adult: true
     },
     lsb: {
         api: 'https://apilsbzy1.com',
-        name: 'lsb资源',
+        name: 'lsb 资源',
         adult: true
     },
     huangcang: {
         api: 'https://hsckzy.vip',
         name: '黄色仓库',
         adult: true,
-        detail: 'https://hsckzy.vip' // 添加detail URL以便特殊处理
+        detail: 'https://hsckzy.vip' // 添加 detail URL 以便特殊处理
     }
 };
 
@@ -120,7 +120,7 @@ const AGGREGATED_SEARCH_CONFIG = {
     showSourceBadges: true    // 是否显示来源徽章
 };
 
-// 抽象API请求配置
+// 抽象 API 请求配置
 const API_CONFIG = {
     search: {
         // 修改搜索接口为返回更多详细数据（包括视频封面、简介和播放列表）
@@ -131,7 +131,7 @@ const API_CONFIG = {
         }
     },
     detail: {
-        // 修改详情接口也使用videolist接口，但是通过ID查询，减少请求次数
+        // 修改详情接口也使用 videolist 接口，但是通过 ID 查询，减少请求次数
         path: '/api.php/provide/vod/?ac=videolist&ids=',
         headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
@@ -143,8 +143,8 @@ const API_CONFIG = {
 // 优化后的正则表达式模式
 const M3U8_PATTERN = /\$https?:\/\/[^"'\s]+?\.m3u8/g;
 
-// 添加自定义播放器URL
-const CUSTOM_PLAYER_URL = 'player.html'; // 使用相对路径引用本地player.html
+// 添加自定义播放器 URL
+const CUSTOM_PLAYER_URL = 'player.html'; // 使用相对路径引用本地 player.html
 
 // 增加视频播放相关配置
 const PLAYER_CONFIG = {
@@ -163,33 +163,33 @@ const PLAYER_CONFIG = {
 const ERROR_MESSAGES = {
     NETWORK_ERROR: '网络连接错误，请检查网络设置',
     TIMEOUT_ERROR: '请求超时，服务器响应时间过长',
-    API_ERROR: 'API接口返回错误，请尝试更换数据源',
+    API_ERROR: 'API 接口返回错误，请尝试更换数据源',
     PLAYER_ERROR: '播放器加载失败，请尝试其他视频源',
     UNKNOWN_ERROR: '发生未知错误，请刷新页面重试'
 };
 
 // 添加进一步安全设置
 const SECURITY_CONFIG = {
-    enableXSSProtection: true,  // 是否启用XSS保护
-    sanitizeUrls: true,         // 是否清理URL
+    enableXSSProtection: true,  // 是否启用 XSS 保护
+    sanitizeUrls: true,         // 是否清理 URL
     maxQueryLength: 100,        // 最大搜索长度
-    allowedApiDomains: [        // 允许的API域名
+    allowedApiDomains: [        // 允许的 API 域名
         'heimuer.xyz',
         'ffzy5.tv'
     ]
 };
 
-// 添加多个自定义API源的配置
+// 添加多个自定义 API 源的配置
 const CUSTOM_API_CONFIG = {
     separator: ',',           // 分隔符
     maxSources: 5,            // 最大允许的自定义源数量
-    testTimeout: 5000,        // 测试超时时间(毫秒)
+    testTimeout: 5000,        // 测试超时时间 (毫秒)
     namePrefix: 'Custom-',    // 自定义源名称前缀
-    validateUrl: true,        // 验证URL格式
+    validateUrl: true,        // 验证 URL 格式
     cacheResults: true,       // 缓存测试结果
-    cacheExpiry: 5184000000,  // 缓存过期时间(2个月)
+    cacheExpiry: 5184000000,  // 缓存过期时间 (2 个月)
     adultPropName: 'isAdult'  // 用于标记成人内容的属性名
 };
 
-// 新增隐藏内置黄色采集站API的变量，默认为true
-//const HIDE_BUILTIN_ADULT_APIS = true;
+// 新增隐藏内置黄色采集站 API 的变量，默认为 true
+const HIDE_BUILTIN_ADULT_APIS = false;
