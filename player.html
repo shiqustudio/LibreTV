@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LibreTV 播放器</title>
+    <title>拾趣TV 播放器</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/styles.css">
     <style>
@@ -148,7 +148,7 @@
                 <svg class="w-8 h-8 mr-2 text-[#00ccff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
                 </svg>
-                <h1 class="text-xl font-bold gradient-text">LibreTV</h1>
+                <h1 class="text-xl font-bold gradient-text">拾趣 TV</h1>
             </a>
         </div>
         <h2 id="videoTitle" class="text-xl font-semibold truncate flex-1 text-center"></h2>
@@ -239,7 +239,7 @@
         let currentEpisodes = [];
         let episodesReversed = false;
         let dp = null;
-        let currentHls = null; // 跟踪当前HLS实例
+        let currentHls = null; // 跟踪当前 HLS 实例
         let autoplayEnabled = true; // 默认开启自动连播
         let isUserSeeking = false; // 跟踪用户是否正在拖动进度条
         let videoHasEnded = false; // 跟踪视频是否已经自然结束
@@ -249,22 +249,22 @@
 
         // 页面加载
         document.addEventListener('DOMContentLoaded', function() {
-            // 解析URL参数
+            // 解析 URL 参数
             const urlParams = new URLSearchParams(window.location.search);
             const videoUrl = urlParams.get('url');
             const title = urlParams.get('title');
             const index = parseInt(urlParams.get('index') || '0');
 
-            // 从localStorage获取数据
+            // 从 localStorage 获取数据
             currentVideoTitle = title || localStorage.getItem('currentVideoTitle') || '未知视频';
             currentEpisodeIndex = index;
             
             // 设置自动连播开关状态
-            autoplayEnabled = localStorage.getItem('autoplayEnabled') !== 'false'; // 默认为true
+            autoplayEnabled = localStorage.getItem('autoplayEnabled') !== 'false'; // 默认为 true
             document.getElementById('autoplayToggle').checked = autoplayEnabled;
             
             // 获取广告过滤设置
-            adFilteringEnabled = localStorage.getItem(PLAYER_CONFIG.adFilteringStorage) !== 'false'; // 默认为true
+            adFilteringEnabled = localStorage.getItem(PLAYER_CONFIG.adFilteringStorage) !== 'false'; // 默认为 true
             
             // 监听自动连播开关变化
             document.getElementById('autoplayToggle').addEventListener('change', function(e) {
@@ -276,13 +276,13 @@
                 currentEpisodes = JSON.parse(localStorage.getItem('currentEpisodes') || '[]');
                 episodesReversed = localStorage.getItem('episodesReversed') === 'true';
             } catch (e) {
-                console.error('获取集数信息失败:', e);
+                console.error('获取集数信息失败：', e);
                 currentEpisodes = [];
                 episodesReversed = false;
             }
 
             // 设置页面标题
-            document.title = currentVideoTitle + ' - LibreTV播放器';
+            document.title = currentVideoTitle + ' - 拾趣播放器';
             document.getElementById('videoTitle').textContent = currentVideoTitle;
             
             // 初始化播放器
@@ -370,7 +370,7 @@
         function initPlayer(videoUrl) {
             if (!videoUrl) return;
 
-            // 配置HLS.js选项
+            // 配置 HLS.js 选项
             const hlsConfig = {
                 debug: false,
                 loader: adFilteringEnabled ? CustomHlsJsLoader : Hls.DefaultConfig.loader,
@@ -399,7 +399,7 @@
                 liveDurationInfinity: false
             };
             
-            // 创建DPlayer实例
+            // 创建 DPlayer 实例
             dp = new DPlayer({
                 container: document.getElementById('player'),
                 autoplay: true,
@@ -412,11 +412,11 @@
                 volume: 0.7,
                 screenshot: true,                // 启用截图功能
                 preventClickToggle: false,       // 允许点击视频切换播放/暂停
-                airplay: true,                   // 在Safari中启用AirPlay功能
-                chromecast: true,                // 启用Chromecast投屏功能
+                airplay: true,                   // 在 Safari 中启用 AirPlay 功能
+                chromecast: true,                // 启用 Chromecast 投屏功能
                 contextmenu: [                   // 自定义右键菜单
                     {
-                        text: '关于 LibreTV',
+                        text: '关于 拾趣',
                         link: 'https://github.com/bestzwei/LibreTV'
                     },
                     {
@@ -432,16 +432,16 @@
                     pic: 'https://img.picgo.net/2025/04/12/image362e7d38b4af4a74.png', // 设置视频封面图
                     customType: {
                         hls: function(video, player) {
-                            // 清理之前的HLS实例
+                            // 清理之前的 HLS 实例
                             if (currentHls && currentHls.destroy) {
                                 try {
                                     currentHls.destroy();
                                 } catch (e) {
-                                    console.warn('销毁旧HLS实例出错:', e);
+                                    console.warn('销毁旧 HLS 实例出错：', e);
                                 }
                             }
                             
-                            // 创建新的HLS实例
+                            // 创建新的 HLS 实例
                             const hls = new Hls(hlsConfig);
                             currentHls = hls;
                             
@@ -451,7 +451,7 @@
                             let errorCount = 0;
                             // 跟踪视频是否开始播放
                             let playbackStarted = false;
-                            // 跟踪视频是否出现bufferAppendError
+                            // 跟踪视频是否出现 bufferAppendError
                             let bufferAppendErrorCount = 0;
                             
                             // 监听视频播放事件
@@ -464,7 +464,7 @@
                             // 监听视频进度事件
                             video.addEventListener('timeupdate', function() {
                                 if (video.currentTime > 1) {
-                                    // 视频进度超过1秒，隐藏错误（如果存在）
+                                    // 视频进度超过 1 秒，隐藏错误（如果存在）
                                     document.getElementById('error').style.display = 'none';
                                 }
                             });
@@ -474,28 +474,28 @@
                             
                             hls.on(Hls.Events.MANIFEST_PARSED, function() {
                                 video.play().catch(e => {
-                                    console.warn('自动播放被阻止:', e);
+                                    console.warn('自动播放被阻止：', e);
                                 });
                             });
                             
                             hls.on(Hls.Events.ERROR, function(event, data) {
-                                console.log('HLS事件:', event, '数据:', data);
+                                console.log('HLS 事件：', event, '数据：', data);
                                 
                                 // 增加错误计数
                                 errorCount++;
                                 
-                                // 处理bufferAppendError
+                                // 处理 bufferAppendError
                                 if (data.details === 'bufferAppendError') {
                                     bufferAppendErrorCount++;
                                     console.warn(`bufferAppendError 发生 ${bufferAppendErrorCount} 次`);
                                     
                                     // 如果视频已经开始播放，则忽略这个错误
                                     if (playbackStarted) {
-                                        console.log('视频已在播放中，忽略bufferAppendError');
+                                        console.log('视频已在播放中，忽略 bufferAppendError');
                                         return;
                                     }
                                     
-                                    // 如果出现多次bufferAppendError但视频未播放，尝试恢复
+                                    // 如果出现多次 bufferAppendError 但视频未播放，尝试恢复
                                     if (bufferAppendErrorCount >= 3) {
                                         hls.recoverMediaError();
                                     }
@@ -503,7 +503,7 @@
                                 
                                 // 如果是致命错误，且视频未播放
                                 if (data.fatal && !playbackStarted) {
-                                    console.error('致命HLS错误:', data);
+                                    console.error('致命 HLS 错误：', data);
                                     
                                     // 尝试恢复错误
                                     switch(data.type) {
@@ -557,7 +557,7 @@
                 showError('视频播放失败，请检查视频源或网络连接');
             });
             
-            // 添加seeking和seeked事件监听器，以检测用户是否在拖动进度条
+            // 添加 seeking 和 seeked 事件监听器，以检测用户是否在拖动进度条
             dp.on('seeking', function() {
                 isUserSeeking = true;
                 videoHasEnded = false; // 重置视频结束标志
@@ -582,9 +582,9 @@
                 }
             });
             
-            // 改进seeked事件处理
+            // 改进 seeked 事件处理
             dp.on('seeked', function() {
-                // 如果视频跳转到了非常接近结尾的位置(小于0.3秒)，且不是自然播放到此处
+                // 如果视频跳转到了非常接近结尾的位置 (小于 0.3 秒)，且不是自然播放到此处
                 if (dp.video && dp.video.duration > 0) {
                     const timeFromEnd = dp.video.duration - dp.video.currentTime;
                     if (timeFromEnd < 0.3 && isUserSeeking) {
@@ -629,7 +629,7 @@
                 }
             });
             
-            // 10秒后如果仍在加载，但不立即显示错误
+            // 10 秒后如果仍在加载，但不立即显示错误
             setTimeout(function() {
                 // 如果视频已经播放开始，则不显示错误
                 if (dp && dp.video && dp.video.currentTime > 0) {
@@ -646,17 +646,17 @@
             }, 10000);
         }
 
-        // 自定义M3U8 Loader用于过滤广告
+        // 自定义 M3U8 Loader 用于过滤广告
         class CustomHlsJsLoader extends Hls.DefaultConfig.loader {
             constructor(config) {
                 super(config);
                 const load = this.load.bind(this);
                 this.load = function(context, config, callbacks) {
-                    // 拦截manifest和level请求
+                    // 拦截 manifest 和 level 请求
                     if (context.type === 'manifest' || context.type === 'level') {
                         const onSuccess = callbacks.onSuccess;
                         callbacks.onSuccess = function(response, stats, context) {
-                            // 如果是m3u8文件，处理内容以移除广告分段
+                            // 如果是 m3u8 文件，处理内容以移除广告分段
                             if (response.data && typeof response.data === 'string') {
                                 // 过滤掉广告段 - 实现更精确的广告过滤逻辑
                                 response.data = filterAdsFromM3U8(response.data, true);
@@ -664,17 +664,17 @@
                             return onSuccess(response, stats, context);
                         };
                     }
-                    // 执行原始load方法
+                    // 执行原始 load 方法
                     load(context, config, callbacks);
                 };
             }
         }
 
-        // M3U8清单广告过滤函数
+        // M3U8 清单广告过滤函数
         function filterAdsFromM3U8(m3u8Content, strictMode = false) {
             if (!m3u8Content) return '';
             
-            // 按行分割M3U8内容
+            // 按行分割 M3U8 内容
             const lines = m3u8Content.split('\n');
             const filteredLines = [];
             
@@ -694,7 +694,7 @@
         function showError(message) {
             // 在视频已经播放的情况下不显示错误
             if (dp && dp.video && dp.video.currentTime > 1) {
-                console.log('忽略错误:', message);
+                console.log('忽略错误：', message);
                 return;
             }
             
@@ -787,7 +787,7 @@
             currentEpisodeIndex = index;
             videoHasEnded = false; // 重置视频结束标志
             
-            // 更新URL，不刷新页面
+            // 更新 URL，不刷新页面
             const newUrl = new URL(window.location.href);
             newUrl.searchParams.set('index', index);
             newUrl.searchParams.set('url', url);
@@ -819,7 +819,7 @@
                 initPlayer(url);
             }
             
-            // 更新UI
+            // 更新 UI
             updateEpisodeInfo();
             updateButtonStates();
             renderEpisodes();
@@ -846,7 +846,7 @@
         function toggleEpisodeOrder() {
             episodesReversed = !episodesReversed;
             
-            // 保存到localStorage
+            // 保存到 localStorage
             localStorage.setItem('episodesReversed', episodesReversed);
             
             // 重新渲染集数列表
@@ -869,7 +869,7 @@
 
         // 设置进度条准确点击处理
         function setupProgressBarPreciseClicks() {
-            // 查找DPlayer的进度条元素
+            // 查找 DPlayer 的进度条元素
             const progressBar = document.querySelector('.dplayer-bar-wrap');
             if (!progressBar || !dp || !dp.video) return;
             
@@ -909,9 +909,9 @@
             userClickedPosition = clickTime;
             
             // 输出调试信息
-            console.log(`进度条点击: ${percentage.toFixed(4)}, 时间: ${clickTime.toFixed(2)}/${duration.toFixed(2)}`);
+            console.log(`进度条点击：${percentage.toFixed(4)}, 时间：${clickTime.toFixed(2)}/${duration.toFixed(2)}`);
             
-            // 阻止默认事件传播，避免DPlayer内部逻辑将视频跳至末尾
+            // 阻止默认事件传播，避免 DPlayer 内部逻辑将视频跳至末尾
             e.stopPropagation();
             
             // 直接设置视频时间
@@ -937,7 +937,7 @@
             // 记录用户点击的位置
             userClickedPosition = clickTime;
             
-            console.log(`进度条触摸: ${percentage.toFixed(4)}, 时间: ${clickTime.toFixed(2)}/${duration.toFixed(2)}`);
+            console.log(`进度条触摸：${percentage.toFixed(4)}, 时间：${clickTime.toFixed(2)}/${duration.toFixed(2)}`);
             
             e.stopPropagation();
             dp.seek(clickTime);

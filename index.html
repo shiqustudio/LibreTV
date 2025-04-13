@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LibreTV - 免费在线视频搜索与观看平台</title>
-    <meta name="description" content="LibreTV是一个免费的在线视频搜索平台，无广告、安全，提供来自多个视频源的内容搜索与观看服务，无需注册即可使用。">
+    <title>ShiQuTV - 免费在线视频搜索与观看平台</title>
+    <meta name="description" content="ShiQuTV是一个免费的在线视频搜索平台，无广告、安全，提供来自多个视频源的内容搜索与观看服务，无需注册即可使用。">
     <meta name="keywords" content="在线视频,免费视频,视频搜索,电影,电视剧,LibreTV">
-    <meta name="author" content="LibreTV Team">
+    <meta name="author" content="ShiQuTV Team">
     <meta name="robots" content="index, follow">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://libretv.is-an.org/">
-    <meta property="og:title" content="LibreTV - 免费在线视频搜索与观看平台">
+    <meta property="og:title" content="ShiQuTV - 免费在线视频搜索与观看平台">
     <meta property="og:description" content="搜索并观看来自多个视频源的内容，支持多种设备，无需注册即可使用。">
     <meta property="og:image" content="https://images.icon-icons.com/38/PNG/512/retrotv_5520.png">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://libretv.is-an.org/">
-    <meta property="twitter:title" content="LibreTV - 免费在线视频搜索与观看平台">
+    <meta property="twitter:title" content="ShiQuTV - 免费在线视频搜索与观看平台">
     <meta property="twitter:description" content="搜索并观看来自多个视频源的内容，支持多种设备，无需注册即可使用。">
     <meta property="twitter:image" content="https://images.icon-icons.com/38/PNG/512/retrotv_5520.png">
     
@@ -61,31 +61,31 @@
                     <button onclick="selectAllAPIs(true, true)" class="px-2 py-1 bg-[#333] hover:bg-[#444] text-white text-xs rounded">全选普通资源</button>
                 </div>
                 
-                <!-- API选择区域 - 使用滚动区域 -->
+                <!-- API 选择区域 - 使用滚动区域 -->
                 <div class="max-h-40 overflow-y-auto bg-[#191919] p-2 rounded-lg mb-3">
                     <div id="apiCheckboxes" class="grid grid-cols-2 gap-2">
-                        <!-- 这里将动态插入API复选框 -->
+                        <!-- 这里将动态插入 API 复选框 -->
                     </div>
                 </div>
                 
-                <!-- API信息显示 -->
+                <!-- API 信息显示 -->
                 <div class="text-xs text-gray-500 flex justify-between items-center">
-                    <span>已选API数量：<span id="selectedApiCount" class="text-white">0</span></span>
+                    <span>已选 API 数量：<span id="selectedApiCount" class="text-white">0</span></span>
                     <span id="siteStatus" class="ml-2"></span>
                 </div>
             </div>
 
-            <!-- 自定义API管理区域 -->
+            <!-- 自定义 API 管理区域 -->
             <div class="p-3 bg-[#151515] rounded-lg shadow-inner">
                 <div class="flex justify-between items-center mb-2">
-                    <label class="block text-sm font-medium text-gray-400 border-b border-[#333] w-full pb-1">自定义API</label>
+                    <label class="block text-sm font-medium text-gray-400 border-b border-[#333] w-full pb-1">自定义 API</label>
                     <button onclick="showAddCustomApiForm()" class="bg-[#333] hover:bg-[#444] text-white w-6 h-6 rounded-full text-center leading-none text-lg ml-1">+</button>
                 </div>
                 <div id="customApisList" class="max-h-32 overflow-y-auto mb-2">
-                    <!-- 自定义API将显示在这里 -->
+                    <!-- 自定义 API 将显示在这里 -->
                 </div>
                 
-                <!-- 添加自定义API表单 (默认隐藏) -->
+                <!-- 添加自定义 API 表单 (默认隐藏) -->
                 <div id="addCustomApiForm" class="hidden mt-2 p-2 bg-[#191919] rounded-lg">
                     <input type="text" id="customApiName" placeholder="API名称" class="w-full bg-[#222] border border-[#333] text-white px-2 py-1 rounded mb-2">
                     <input type="text" id="customApiUrl" placeholder="https://abc.com" class="w-full bg-[#222] border border-[#333] text-white px-2 py-1 rounded mb-2">
@@ -145,7 +145,7 @@
                     <svg class="w-10 h-10 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
                     </svg>
-                    <h1 class="text-5xl font-bold gradient-text">LibreTV</h1>
+                    <h1 class="text-5xl font-bold gradient-text">拾趣 TV</h1>
                 </div>
                 <p class="text-gray-400 mb-8">自由观影，畅享精彩</p>
             </header>
@@ -192,20 +192,20 @@
                         <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
                         </svg>
-                        <span class="gradient-text font-bold">LibreTV</span>
+                        <span class="gradient-text font-bold">拾趣</span>
                     </div>
-                    <p class="text-gray-500 text-sm mt-2 text-center md:text-left">© 2025 LibreTV - 自由观影，畅享精彩</p>
+                    <p class="text-gray-500 text-sm mt-2 text-center md:text-left">© 2025 ShiQuTV - 自由观影，畅享精彩</p>
                 </div>
                 
                 <div class="text-center md:text-right">
                     <p class="text-gray-500 text-sm max-w-md">
                         免责声明：本站仅为视频搜索工具，不存储、上传或分发任何视频内容。
-                        所有视频均来自第三方API接口。如有侵权，请联系相关内容提供方。
+                        所有视频均来自第三方 API 接口。如有侵权，请联系相关内容提供方。
                     </p>
-                    <div class="mt-2 flex justify-center md:justify-end space-x-4">
+                    <!--<div class="mt-2 flex justify-center md:justify-end space-x-4">
                         <a href="about.html" class="text-gray-400 hover:text-white text-sm transition-colors">关于我们</a>
                         <a href="privacy.html" class="text-gray-400 hover:text-white text-sm transition-colors">隐私政策</a>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>
